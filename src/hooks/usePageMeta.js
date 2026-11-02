@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
-const SITE_NAME = 'AI Tools Directory'
+const SITE_NAME = 'Eshiqo'
 const DEFAULT_DESCRIPTION =
   'A curated directory for discovering AI tools by category, pricing model, and use case.'
 
 // Applies per-route document titles and social/SEO metadata. Each page passes a
-// short title (used as "Title — AI Tools Directory") and a description; omitting
+// short title (used as "Title — Eshiqo") and a description; omitting
 // the title falls back to the branded home title so no route stays generic.
 function upsertMeta(attr, key, value) {
   if (!value) return
@@ -25,6 +25,7 @@ function usePageMeta({ title, description } = {}) {
 
     document.title = fullTitle
     upsertMeta('name', 'description', metaDescription)
+    upsertMeta('property', 'og:site_name', SITE_NAME)
     upsertMeta('property', 'og:title', fullTitle)
     upsertMeta('property', 'og:description', metaDescription)
     upsertMeta('property', 'og:url', window.location.href)

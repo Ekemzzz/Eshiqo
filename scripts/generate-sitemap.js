@@ -1,11 +1,14 @@
 // Generates public/sitemap.xml and public/robots.txt from the catalog data.
 // Run directly (npm run sitemap) or automatically before a build via the
-// correct, e.g. `SITE_URL=https://example.com npm run build`.
+// prebuild hook. Reads SITE_URL from the environment or .env.local.
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { writeFileSync } from 'node:fs'
+import { loadEnv } from './env.mjs'
 import { categories } from '../src/data/categories.js'
 import { tools } from '../src/data/tools.js'
+
+loadEnv()
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url))
 const publicDir = path.resolve(scriptDir, '..', 'public')
