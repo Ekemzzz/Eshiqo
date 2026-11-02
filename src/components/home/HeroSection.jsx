@@ -13,7 +13,7 @@ function HeroSection() {
   return (
     <section className="home-hero" aria-labelledby="home-title">
       <div className="home-hero__content">
-        <p className="home-hero__eyebrow">A practical AI tools directory</p>
+        <p className="home-hero__eyebrow">Eshiqo — a practical AI tools directory</p>
         <h1 id="home-title">Find the right AI tool for the task</h1>
         <p className="home-hero__description">
           Search by what you need to get done, compare your options, and save tools worth revisiting.
