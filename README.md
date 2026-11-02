@@ -1,4 +1,4 @@
-# AI Tools Directory
+# Eshiqo: AI Tools Directory
 
 A React + Vite app for discovering AI tools by task, category, and use case instead of by hype.
 
