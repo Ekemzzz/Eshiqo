@@ -3,9 +3,14 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 import useCatalog from '../hooks/useCatalog.js'
 import useCountUp from '../hooks/useCountUp.js'
+import usePageMeta from '../hooks/usePageMeta.js'
 import '../styles/about.css'
 
 function AboutPage() {
+  usePageMeta({
+    title: 'About',
+    description: 'Why Eshiqo exists: a practical way to find AI tools by task, category, and pricing instead of by hype.',
+  })
   // Each mount gets a new trigger value so the counter replays on every page visit.
   const [trigger] = useState(() => Date.now())
   const { tools, categories } = useCatalog()
