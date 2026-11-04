@@ -147,8 +147,29 @@ Recommended fields:
 - relevant `useCases`, `tags`, and `features`
 - source URL and pricing references when available
 - `featured: true` only for intentionally curated picks
+- `dateAdded: 'YYYY-MM-DD'` set to the day you add the tool (see below)
 
 The validation utility in `src/utils/validateTools.js` checks catalog data and surfaces warnings/errors before the app uses it.
+
+### Newly added section and category placement
+
+Any tool you add automatically appears in every category listed in its
+`categories` array — category pages, Explore filters, search, and category
+counts all derive from that field, so no extra wiring is needed.
+
+The home page also has a **Newly added** section that surfaces the most recent
+additions. It is driven by each tool's `dateAdded`:
+
+- Set `dateAdded` to the real day you add the tool. Tools with an explicit
+  `dateAdded` always win over the auto-derived fallback in `deriveDateAdded`.
+- The section shows the top 6 by `dateAdded` (newest first); link
+  `/tools?sort=newest` shows the full ordering.
+- A **NEW** badge appears on a card when its `dateAdded` is within
+  `NEW_TOOL_WINDOW_DAYS` (30) of the catalog's newest addition. Both live in
+  `src/utils/catalog.js` (`getNewestTools` / `isRecentlyAdded`) and are covered
+  by `tests/catalog.test.js`.
+- After editing `src/data/tools.js`, run `npm run seed` so Supabase reflects the
+  new entry (source of truth is still this file).
 
 ## Tool logos
 
