@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ai-tool-pied.vercel.app/sitemap.xml
+Sitemap: https://eshiqo.vercel.app/sitemap.xml
