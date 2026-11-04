@@ -140,3 +140,37 @@ export function getSearchRoute(query) {
   const params = new URLSearchParams({ q: normalizedQuery })
   return `/tools?${params.toString()}`
 }
+
+// "New" is measured against the most recently added tool in the catalog rather
+// than the wall clock, because the static catalog's dateAdded values are
+// synthetic anchors (see deriveDateAdded in data/tools.js). This keeps the
+// "Newly added" section and the NEW badge stable regardless of when the app is
+// built or which device views it. A tool counts as new when its dateAdded falls
+// within NEW_TOOL_WINDOW_DAYS of the catalog's newest addition.
+export const NEW_TOOL_WINDOW_DAYS = 30
+const DAY_MS = 86_400_000
+
+function parseDate(value) {
+  if (typeof value !== 'string' || !value) return null
+  const date = new Date(`${value}T00:00:00.000Z`)
+  return Number.isNaN(date.getTime()) ? null : date
+}
+
+const newestAddedDate = defaultTools.reduce((latest, tool) => {
+  const date = parseDate(tool?.dateAdded)
+  return date && (!latest || date > latest) ? date : latest
+}, null)
+
+export function isRecentlyAdded(tool) {
+  if (!newestAddedDate) return false
+  const added = parseDate(tool?.dateAdded)
+  if (!added) return false
+  return added.getTime() >= newestAddedDate.getTime() - NEW_TOOL_WINDOW_DAYS * DAY_MS
+}
+
+export function getNewestTools(tools = defaultTools, limit = 6) {
+  if (!Array.isArray(tools) || !Number.isFinite(limit) || limit <= 0) return []
+  return sortTools(tools, { by: 'dateAdded', direction: 'desc' })
+    .filter((tool) => parseDate(tool?.dateAdded))
+    .slice(0, Math.floor(limit))
+}
