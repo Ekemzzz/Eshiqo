@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import CompareButton from '../common/CompareButton.jsx'
 import FavoriteButton from '../common/FavoriteButton.jsx'
 import ToolLogo from '../common/ToolLogo.jsx'
-import { getToolCategories } from '../../utils/catalog.js'
+import { getToolCategories, isRecentlyAdded } from '../../utils/catalog.js'
 import { PRICING_LABELS } from '../../utils/pricing.js'
 import useCardSpotlight from '../../hooks/useCardSpotlight.js'
 
@@ -11,6 +11,7 @@ function ToolCard({ tool, compact = false }) {
   const toolCategories = getToolCategories(tool)
   const primaryCategory = toolCategories[0]
   const pricingLabel = PRICING_LABELS[tool.pricingModel] ?? PRICING_LABELS.unknown
+  const isNew = isRecentlyAdded(tool)
   const spotlight = useCardSpotlight()
 
   return (
@@ -27,6 +28,12 @@ function ToolCard({ tool, compact = false }) {
           <FavoriteButton tool={tool} />
         </div>
       </div>
+
+      {isNew && (
+        <div className="tool-card__flag-row">
+          <span className="tool-card__new">New</span>
+        </div>
+      )}
 
       <h3 className="tool-card__title">
         <Link to={`/tools/${tool.slug}`}>{tool.name}</Link>
