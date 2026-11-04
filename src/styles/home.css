@@ -606,6 +606,26 @@
   font-weight: 600;
 }
 
+.tool-card__flag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-end: var(--space-2);
+}
+
+.tool-card__new {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  color: var(--color-surface);
+  background: var(--color-primary);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 .tool-card__title {
   margin-block-end: var(--space-2);
   font-size: var(--font-size-xl);

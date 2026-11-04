@@ -5,6 +5,7 @@ import FeaturedTools from '../components/home/FeaturedTools.jsx'
 import HeroSection from '../components/home/HeroSection.jsx'
 import HowItWorks from '../components/home/HowItWorks.jsx'
 import MoreTools from '../components/home/MoreTools.jsx'
+import NewlyAdded from '../components/home/NewlyAdded.jsx'
 import SectionHeading from '../components/home/SectionHeading.jsx'
 import SubmitToolCTA from '../components/home/SubmitToolCTA.jsx'
 import CategoryGrid from '../components/home/CategoryGrid.jsx'
@@ -36,6 +37,7 @@ function HomePage() {
         <CategoryGrid categories={categories} tools={tools} />
       </section>
 
+      <NewlyAdded tools={tools} />
       <FeaturedTools tools={tools} />
       <MoreTools tools={tools} />
       <HowItWorks />
