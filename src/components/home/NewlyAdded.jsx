@@ -4,7 +4,7 @@ import SectionHeading from './SectionHeading.jsx'
 import ToolGrid from './ToolGrid.jsx'
 import { getNewestTools } from '../../utils/catalog.js'
 
-const NEWLY_ADDED_LIMIT = 6
+const NEWLY_ADDED_LIMIT = 7
 
 function NewlyAdded({ tools }) {
   const recentTools = getNewestTools(tools, NEWLY_ADDED_LIMIT)
@@ -22,7 +22,7 @@ function NewlyAdded({ tools }) {
           </Link>
         }
       />
-      <ToolGrid tools={recentTools} columns={3} />
+      <ToolGrid tools={recentTools} columns={3} showNewBadge />
     </section>
   )
 }
