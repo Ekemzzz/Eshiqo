@@ -7,7 +7,7 @@ import { getToolCategories, isRecentlyAdded } from '../../utils/catalog.js'
 import { PRICING_LABELS } from '../../utils/pricing.js'
 import useCardSpotlight from '../../hooks/useCardSpotlight.js'
 
-function ToolCard({ tool, compact = false }) {
+function ToolCard({ tool, compact = false, showNewBadge = false }) {
   const toolCategories = getToolCategories(tool)
   const primaryCategory = toolCategories[0]
   const pricingLabel = PRICING_LABELS[tool.pricingModel] ?? PRICING_LABELS.unknown
@@ -29,7 +29,7 @@ function ToolCard({ tool, compact = false }) {
         </div>
       </div>
 
-      {isNew && (
+      {showNewBadge && isNew && (
         <div className="tool-card__flag-row">
           <span className="tool-card__new">New</span>
         </div>
