@@ -14,6 +14,7 @@ function ToolGrid({
   emptyTitle = 'No tools to display',
   emptyDescription = 'Try a different search or browse another category.',
   compact = false,
+  showNewBadge = false,
 }) {
   const columnCount = normalizeColumns(columns)
   const gridClassName = `tool-grid tool-grid--columns-${columnCount}${compact ? ' tool-grid--compact' : ''}`
@@ -48,7 +49,7 @@ function ToolGrid({
   return (
     <div className={gridClassName}>
       {tools.map((tool) => (
-        <ToolCard key={tool.id} tool={tool} compact={compact} />
+        <ToolCard key={tool.id} tool={tool} compact={compact} showNewBadge={showNewBadge} />
       ))}
     </div>
   )

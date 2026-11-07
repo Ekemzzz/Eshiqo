@@ -185,6 +185,34 @@ export const rawTools = [
     sourceUrl: 'https://developers.google.com/gemini-code-assist/', pricingUrl: 'https://developers.google.com/gemini-code-assist/pricing', pricingSourceUrl: 'https://developers.google.com/gemini-code-assist/pricing', lastVerifiedAt: '2026-10-16',
   }),
   makeTool({
+    id: 'zed-ai', name: 'Zed AI', description: 'AI coding features built into the Zed editor, with hosted models and support for external providers and agents.',
+    websiteUrl: 'https://zed.dev/', pricingModel: 'freemium', categories: ['AI Coding and Development'],
+    useCases: ['Write code', 'Develop software', 'Work with coding agents'], tags: ['coding', 'development', 'code editor', 'AI agent'],
+    features: ['Inline code assistance', 'Agentic coding workflows', 'Hosted models with usage-based pricing', 'Bring your own API keys', 'External agent integrations'],
+    sourceUrl: 'https://zed.dev/docs/ai/overview', pricingUrl: 'https://zed.dev/pricing', pricingSourceUrl: 'https://zed.dev/docs/account/plans-and-pricing', dateAdded: '2026-11-07', lastVerifiedAt: '2026-11-07',
+  }),
+  makeTool({
+    id: 'v0', name: 'v0', description: 'Vercel’s AI development tool for generating user interfaces and building web applications from natural-language prompts.',
+    websiteUrl: 'https://v0.dev/', pricingModel: 'freemium', categories: ['AI Coding and Development', 'AI Design and Creativity'],
+    useCases: ['Build web apps from prompts', 'Generate user interfaces', 'Prototype ideas quickly'], tags: ['coding', 'development', 'app builder', 'UI generation', 'web development'],
+    features: ['Prompt-based UI generation', 'Generate and edit application code', 'Iterative visual development', 'Vercel deployment workflow'],
+    sourceUrl: 'https://v0.dev/docs', pricingUrl: 'https://v0.dev/pricing', pricingSourceUrl: 'https://v0.dev/pricing', dateAdded: '2026-11-07', lastVerifiedAt: '2026-11-07',
+  }),
+  makeTool({
+    id: 'google-antigravity', name: 'Google Antigravity', description: 'Google’s agent-first development platform for planning and carrying out coding tasks across an editor, terminal, and browser.',
+    websiteUrl: 'https://antigravity.google/', pricingModel: 'freemium', categories: ['AI Coding and Development'],
+    useCases: ['Write code', 'Automate dev tasks', 'Build and test applications'], tags: ['coding', 'development', 'google', 'AI agent', 'code editor'],
+    features: ['Agent-first development workspace', 'Agents can use the editor, terminal, and browser', 'Task planning and review artifacts', 'Gemini model access'],
+    sourceUrl: 'https://developers.googleblog.com/en/build-with-google-antigravity-our-new-agentic-development-platform/', pricingUrl: 'https://antigravity.google/pricing', pricingSourceUrl: 'https://antigravity.google/pricing', dateAdded: '2026-11-07', lastVerifiedAt: '2026-11-07',
+  }),
+  makeTool({
+    id: 'aider', name: 'Aider', description: 'An open-source AI pair programming tool that works with your local codebase from the terminal and commits changes to Git.',
+    websiteUrl: 'https://aider.chat/', pricingModel: 'open-source', categories: ['AI Coding and Development'],
+    useCases: ['Write code', 'Edit code with AI', 'Work with Git repositories'], tags: ['coding', 'development', 'open-source', 'terminal', 'AI pair programming'],
+    features: ['Terminal-based pair programming', 'Git-aware code edits and commits', 'Works with multiple LLM providers', 'Repository mapping for code context'],
+    sourceUrl: 'https://aider.chat/docs/', dateAdded: '2026-11-07', lastVerifiedAt: '2026-11-07',
+  }),
+  makeTool({
     id: 'elicit', name: 'Elicit', description: 'An AI research assistant that searches academic literature, extracts relevant findings, and helps organize evidence into research reports.',
     websiteUrl: 'https://elicit.com/', pricingModel: 'freemium', categories: ['AI Research and Education'],
     useCases: ['Search academic papers', 'Research'], tags: ['research', 'education', 'academic papers', 'citations'], featured: true,
@@ -468,9 +496,27 @@ export const rawTools = [
   }),
   makeTool({
     id: 'kling-ai', name: 'Kling AI', description: 'An AI video-generation platform for creating videos with realistic motion, visual effects, and creative scene control.',
-    websiteUrl: 'https://klingai.com/', pricingModel: 'freemium', categories: ['AI Video Generation and Editing'],
+    websiteUrl: 'https://klingai.com/', pricingModel: 'freemium', categories: ['AI Video Generation and Editing', 'AI Image Generation', 'AI Design and Creativity'],
     useCases: ['Generate video', 'Animate images', 'Edit clips'], tags: ['video generation', 'text-to-video', 'image-to-video', 'motion'],
     sourceUrl: 'https://klingai.com/', pricingUrl: 'https://klingai.com/', pricingSourceUrl: 'https://klingai.com/', lastVerifiedAt: '2026-10-16',
+  }),
+  makeTool({
+    id: 'pixverse', name: 'PixVerse', description: 'An AI video creation platform for generating and transforming short videos from text, images, and creative effects.',
+    websiteUrl: 'https://pixverse.ai/', pricingModel: 'freemium', categories: ['AI Video Generation and Editing', 'AI Image Generation', 'AI Audio, Music and Voice', 'AI Design and Creativity'],
+    useCases: ['Generate video', 'Animate images', 'Create short clips'], tags: ['video generation', 'text-to-video', 'image-to-video', 'effects'],
+    sourceUrl: 'https://pixverse.ai/', pricingUrl: 'https://app.pixverse.ai/subscribe', pricingSourceUrl: 'https://app.pixverse.ai/subscribe', dateAdded: '2026-11-07', lastVerifiedAt: '2026-11-07',
+  }),
+  makeTool({
+    id: 'hailuo-ai', name: 'Hailuo AI', description: 'MiniMax’s AI video and image creation platform for generating clips and images from prompts and references.',
+    websiteUrl: 'https://hailuoai.video/', pricingModel: 'freemium', categories: ['AI Video Generation and Editing', 'AI Image Generation', 'AI Design and Creativity'],
+    useCases: ['Generate video', 'Generate images', 'Animate images'], tags: ['video generation', 'image generation', 'text-to-video', 'image-to-video', 'MiniMax'],
+    sourceUrl: 'https://hailuoai.video/', pricingUrl: 'https://hailuoai.video/doc/payment-policy.html', pricingSourceUrl: 'https://hailuoai.video/doc/payment-policy.html', dateAdded: '2026-11-07', lastVerifiedAt: '2026-11-07',
+  }),
+  makeTool({
+    id: 'filmora', name: 'Filmora', description: 'A video editing application with AI-assisted tools for creating, editing, and enhancing video, image, and audio content.',
+    websiteUrl: 'https://filmora.wondershare.com/', pricingModel: 'freemium', categories: ['AI Video Generation and Editing', 'AI Image Generation', 'AI Audio, Music and Voice', 'AI Design and Creativity'],
+    useCases: ['Edit video', 'Create images and audio', 'Enhance video with AI'], tags: ['video editing', 'AI video', 'image generation', 'audio editing', 'video effects'],
+    sourceUrl: 'https://filmora.wondershare.com/ai-video-editing.html', pricingUrl: 'https://filmora.wondershare.com/shop/buy/buy-video-editor.html', pricingSourceUrl: 'https://filmora.wondershare.com/shop/buy/buy-video-editor.html', dateAdded: '2026-11-07', lastVerifiedAt: '2026-11-07',
   }),
   makeTool({
     id: 'luma-dream-machine', name: 'Luma Dream Machine', description: 'An AI creative platform for generating videos and images from text prompts and visual references.',
