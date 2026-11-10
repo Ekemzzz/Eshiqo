@@ -162,11 +162,12 @@ additions. It is driven by each tool's `dateAdded`:
 
 - Set `dateAdded` to the real day you add the tool. Tools with an explicit
   `dateAdded` always win over the auto-derived fallback in `deriveDateAdded`.
-- The section shows the top 6 by `dateAdded` (newest first); link
+- The section shows the top 7 by `dateAdded` (newest first); link
   `/tools?sort=newest` shows the full ordering.
-- A **NEW** badge appears on a card when its `dateAdded` is within
-  `NEW_TOOL_WINDOW_DAYS` (30) of the catalog's newest addition. Both live in
-  `src/utils/catalog.js` (`getNewestTools` / `isRecentlyAdded`) and are covered
+- A **NEW** badge appears on a card only for the latest addition batch: tools
+  whose `dateAdded` equals the catalog's newest `dateAdded`. As newer batches
+  are added, older ones automatically lose the badge. The logic lives in
+  `src/utils/catalog.js` (`getNewestTools` / `isRecentlyAdded`) and is covered
   by `tests/catalog.test.js`.
 - After editing `src/data/tools.js`, run `npm run seed` so Supabase reflects the
   new entry (source of truth is still this file).
