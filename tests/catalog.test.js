@@ -9,7 +9,6 @@ import {
   getCategoryCounts,
   getNewestTools,
   isRecentlyAdded,
-  NEW_TOOL_WINDOW_DAYS,
   searchTools,
   sortTools,
 } from '../src/utils/catalog.js'
@@ -161,23 +160,18 @@ test('getNewestTools orders by dateAdded descending, respects the limit, and dro
   assert.deepEqual(getNewestTools(null, 3), [])
 })
 
-test('isRecentlyAdded marks tools near the catalog newest addition and ignores stale or missing dates', () => {
+test('isRecentlyAdded flags only the latest addition batch and ignores older or missing dates', () => {
   const anchor = tools.reduce((latest, tool) => (tool.dateAdded && tool.dateAdded > latest ? tool.dateAdded : latest), '')
   assert.ok(anchor, 'catalog should carry dateAdded values')
 
-  assert.ok(isRecentlyAdded({ dateAdded: anchor }))
+  assert.ok(isRecentlyAdded({ dateAdded: anchor }), 'newest batch should carry the badge')
   assert.ok(isRecentlyAdded({ dateAdded: '2026-01-01' }) === false)
   assert.ok(isRecentlyAdded({ dateAdded: null }) === false)
   assert.ok(isRecentlyAdded(undefined) === false)
 
-  const justOutside = new Date(
-    Date.parse(`${anchor}T00:00:00.000Z`) - (NEW_TOOL_WINDOW_DAYS + 5) * 86_400_000,
+  const oneDayOlder = new Date(
+    Date.parse(`${anchor}T00:00:00.000Z`) - 86_400_000,
   ).toISOString().slice(0, 10)
-  assert.ok(isRecentlyAdded({ dateAdded: justOutside }) === false)
-
-  const insideWindow = new Date(
-    Date.parse(`${anchor}T00:00:00.000Z`) - Math.floor(NEW_TOOL_WINDOW_DAYS / 2) * 86_400_000,
-  ).toISOString().slice(0, 10)
-  assert.ok(isRecentlyAdded({ dateAdded: insideWindow }))
+  assert.ok(isRecentlyAdded({ dateAdded: oneDayOlder }) === false, 'older batches should lose the badge')
 })
 
